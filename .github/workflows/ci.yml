@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    uses: swift-foundations/.github/.github/workflows/swift-ci.yml@main
+    secrets: inherit
+
+  docs:
+    uses: swift-foundations/.github/.github/workflows/swift-docs.yml@main
+    secrets: inherit
