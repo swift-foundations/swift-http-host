@@ -29,6 +29,7 @@ extension Host.Allowlist: Server.Middleware {
     switch decision {
     case .allowed:
       return try await next(request)
+
     case .denied:
       throw .forbidden("Host not allowed")
     }
