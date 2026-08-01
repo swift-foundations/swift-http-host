@@ -18,7 +18,7 @@ extension Host.Allowlist: Server.Middleware {
     let authority = request.headers.first("Host")?.rawValue
 
     let decision: Host.Decision
-    do {
+    do throws(Host.Error) {
       decision = try authorize(authority)
     } catch Host.Error.missing {
       throw .badRequest("Missing Host header")

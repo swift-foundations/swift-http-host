@@ -13,23 +13,25 @@ extension Host {
     public init(allowedHosts: [String]) {
       self.hosts = Set(allowedHosts.map { $0.lowercased() })
     }
+  }
+}
 
-    /// Authorizes an authority or `Host` header value.
-    ///
-    /// A valid numeric port is removed before exact membership is checked.
-    /// Bracketed IPv6 hosts retain their brackets, so `[::1]:443` compares
-    /// with the configured host `[::1]`.
-    public func authorize(_ authority: String?) throws(Host.Error) -> Host.Decision {
-      guard let authority, !authority.isEmpty else {
-        throw .missing
-      }
-
-      guard let host = Self.host(from: authority) else {
-        throw .malformed
-      }
-
-      return hosts.contains(host.lowercased()) ? .allowed : .denied
+extension Host.Allowlist {
+  /// Authorizes an authority or `Host` header value.
+  ///
+  /// A valid numeric port is removed before exact membership is checked.
+  /// Bracketed IPv6 hosts retain their brackets, so `[::1]:443` compares
+  /// with the configured host `[::1]`.
+  public func authorize(_ authority: String?) throws(Host.Error) -> Host.Decision {
+    guard let authority, !authority.isEmpty else {
+      throw .missing
     }
+
+    guard let host = Self.host(from: authority) else {
+      throw .malformed
+    }
+
+    return hosts.contains(host.lowercased()) ? .allowed : .denied
   }
 }
 
@@ -61,7 +63,7 @@ extension Host.Allowlist {
     return String(authority[..<separator])
   }
 
-  fileprivate static func validPort(_ port: some Collection<Character>) -> Bool {
+  fileprivate static func validPort(_ port: some Swift.Collection<Character>) -> Bool {
     guard !port.isEmpty,
       port.allSatisfy({ $0.isNumber }),
       let value = Int(String(port))
