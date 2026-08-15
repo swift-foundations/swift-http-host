@@ -6,9 +6,9 @@
 // ===----------------------------------------------------------------------===//
 
 extension Host {
-  /// The result of evaluating a host against an allowlist.
-  public enum Decision: Sendable, Equatable {
-    case allowed
-    case denied
-  }
+    /// The result of evaluating a host against an allowlist.
+    public enum Decision: Sendable, Equatable {
+        case allowed
+        case denied
+    }
 }

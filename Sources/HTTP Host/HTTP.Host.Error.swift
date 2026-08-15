@@ -6,9 +6,9 @@
 // ===----------------------------------------------------------------------===//
 
 extension Host {
-  /// Input failures that prevent an authorization decision.
-  public enum Error: Swift.Error, Sendable, Equatable {
-    case missing
-    case malformed
-  }
+    /// Input failures that prevent an authorization decision.
+    public enum Error: Swift.Error, Sendable, Equatable {
+        case missing
+        case malformed
+    }
 }
