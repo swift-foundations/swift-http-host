@@ -8,7 +8,7 @@ Host authorization policy for HTTP authority and `Host` header values.
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/swift-foundations/swift-http-host.git", branch: "main")
+    .package(url: "https://github.com/swift-compositions/swift-http-host.git", branch: "main")
 ]
 ```
 

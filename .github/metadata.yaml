@@ -1,7 +1,7 @@
 # .github/metadata.yaml
 description: "Host authorization policy for HTTP authority and Host-header values in Swift."
 topics:
-  - foundations
+  - compositions
   - http
   - host
 homepage: "https://swift-institute.org"
